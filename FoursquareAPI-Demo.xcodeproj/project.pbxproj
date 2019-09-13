@@ -18,6 +18,7 @@
 		A8791A3A232BD4F300089529 /* FoursquareClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A39232BD4F300089529 /* FoursquareClient.swift */; };
 		A8791A3C232BD58D00089529 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A3B232BD58D00089529 /* Endpoint.swift */; };
 		A8791A3E232BD6C500089529 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A3D232BD6C500089529 /* Venue.swift */; };
+		A8791A42232BFF5E00089529 /* VenueListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A41232BFF5E00089529 /* VenueListVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		A8791A39232BD4F300089529 /* FoursquareClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoursquareClient.swift; sourceTree = "<group>"; };
 		A8791A3B232BD58D00089529 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		A8791A3D232BD6C500089529 /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		A8791A41232BFF5E00089529 /* VenueListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueListVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 		A8791A2F232BD40300089529 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A8791A41232BFF5E00089529 /* VenueListVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				A8791A34232BD4B300089529 /* APIError.swift in Sources */,
 				A8791A36232BD4B300089529 /* Result.swift in Sources */,
 				A8791A3E232BD6C500089529 /* Venue.swift in Sources */,
+				A8791A42232BFF5E00089529 /* VenueListVC.swift in Sources */,
 				A8791A35232BD4B300089529 /* APIClient.swift in Sources */,
 				A8791A3C232BD58D00089529 /* Endpoint.swift in Sources */,
 				A8791A3A232BD4F300089529 /* FoursquareClient.swift in Sources */,

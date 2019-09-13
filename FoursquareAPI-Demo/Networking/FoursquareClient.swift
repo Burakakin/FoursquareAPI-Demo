@@ -20,7 +20,7 @@ class FoursquareClient: APIClient {
         self.init(configuration: .default)
     }
     
-    func getFeed(with endpoint: FoursquareEnum, query: String, longitude: String, latitude: String, completion: @escaping (Result<FoursquareAPIResponse?, APIError>) -> Void) {
+    func getVenues(with endpoint: FoursquareEnum, query: String, longitude: String, latitude: String, completion: @escaping (Result<FoursquareAPIResponse?, APIError>) -> Void) {
         
         
         
