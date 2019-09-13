@@ -17,6 +17,7 @@
 		A8791A36232BD4B300089529 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A33232BD4B300089529 /* Result.swift */; };
 		A8791A3A232BD4F300089529 /* FoursquareClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A39232BD4F300089529 /* FoursquareClient.swift */; };
 		A8791A3C232BD58D00089529 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A3B232BD58D00089529 /* Endpoint.swift */; };
+		A8791A3E232BD6C500089529 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A3D232BD6C500089529 /* Venue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		A8791A33232BD4B300089529 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		A8791A39232BD4F300089529 /* FoursquareClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoursquareClient.swift; sourceTree = "<group>"; };
 		A8791A3B232BD58D00089529 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		A8791A3D232BD6C500089529 /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +90,8 @@
 				A8791A2F232BD40300089529 /* Controller */,
 				A8791A2E232BD3FD00089529 /* View */,
 				A8791A2D232BD3DB00089529 /* Model */,
-				A8791A11232BD02900089529 /* Main.storyboard */,
 				A8791A30232BD48000089529 /* Networking */,
+				A8791A11232BD02900089529 /* Main.storyboard */,
 				A8791A14232BD02A00089529 /* Assets.xcassets */,
 				A8791A0D232BD02900089529 /* AppDelegate.swift */,
 				A8791A16232BD02A00089529 /* LaunchScreen.storyboard */,
@@ -110,6 +112,7 @@
 		A8791A2D232BD3DB00089529 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A8791A3D232BD6C500089529 /* Venue.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -134,8 +137,8 @@
 				A8791A31232BD4B300089529 /* APIError.swift */,
 				A8791A32232BD4B300089529 /* APIClient.swift */,
 				A8791A33232BD4B300089529 /* Result.swift */,
-				A8791A39232BD4F300089529 /* FoursquareClient.swift */,
 				A8791A3B232BD58D00089529 /* Endpoint.swift */,
+				A8791A39232BD4F300089529 /* FoursquareClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				A8791A0E232BD02900089529 /* AppDelegate.swift in Sources */,
 				A8791A34232BD4B300089529 /* APIError.swift in Sources */,
 				A8791A36232BD4B300089529 /* Result.swift in Sources */,
+				A8791A3E232BD6C500089529 /* Venue.swift in Sources */,
 				A8791A35232BD4B300089529 /* APIClient.swift in Sources */,
 				A8791A3C232BD58D00089529 /* Endpoint.swift in Sources */,
 				A8791A3A232BD4F300089529 /* FoursquareClient.swift in Sources */,
