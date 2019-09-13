@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		A8791A0E232BD02900089529 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A0D232BD02900089529 /* AppDelegate.swift */; };
-		A8791A10232BD02900089529 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A0F232BD02900089529 /* ViewController.swift */; };
 		A8791A13232BD02900089529 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8791A11232BD02900089529 /* Main.storyboard */; };
 		A8791A15232BD02A00089529 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8791A14232BD02A00089529 /* Assets.xcassets */; };
 		A8791A18232BD02A00089529 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8791A16232BD02A00089529 /* LaunchScreen.storyboard */; };
 		A8791A23232BD02B00089529 /* FoursquareAPI_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A22232BD02B00089529 /* FoursquareAPI_DemoTests.swift */; };
+		A8791A34232BD4B300089529 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A31232BD4B300089529 /* APIError.swift */; };
+		A8791A35232BD4B300089529 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A32232BD4B300089529 /* APIClient.swift */; };
+		A8791A36232BD4B300089529 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A33232BD4B300089529 /* Result.swift */; };
+		A8791A3A232BD4F300089529 /* FoursquareClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A39232BD4F300089529 /* FoursquareClient.swift */; };
+		A8791A3C232BD58D00089529 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A3B232BD58D00089529 /* Endpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +32,6 @@
 /* Begin PBXFileReference section */
 		A8791A0A232BD02900089529 /* FoursquareAPI-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FoursquareAPI-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8791A0D232BD02900089529 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A8791A0F232BD02900089529 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A8791A12232BD02900089529 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A8791A14232BD02A00089529 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8791A17232BD02A00089529 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +39,11 @@
 		A8791A1E232BD02B00089529 /* FoursquareAPI-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FoursquareAPI-DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8791A22232BD02B00089529 /* FoursquareAPI_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoursquareAPI_DemoTests.swift; sourceTree = "<group>"; };
 		A8791A24232BD02B00089529 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8791A31232BD4B300089529 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		A8791A32232BD4B300089529 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		A8791A33232BD4B300089529 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		A8791A39232BD4F300089529 /* FoursquareClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoursquareClient.swift; sourceTree = "<group>"; };
+		A8791A3B232BD58D00089529 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,10 +85,13 @@
 		A8791A0C232BD02900089529 /* FoursquareAPI-Demo */ = {
 			isa = PBXGroup;
 			children = (
-				A8791A0D232BD02900089529 /* AppDelegate.swift */,
-				A8791A0F232BD02900089529 /* ViewController.swift */,
+				A8791A2F232BD40300089529 /* Controller */,
+				A8791A2E232BD3FD00089529 /* View */,
+				A8791A2D232BD3DB00089529 /* Model */,
 				A8791A11232BD02900089529 /* Main.storyboard */,
+				A8791A30232BD48000089529 /* Networking */,
 				A8791A14232BD02A00089529 /* Assets.xcassets */,
+				A8791A0D232BD02900089529 /* AppDelegate.swift */,
 				A8791A16232BD02A00089529 /* LaunchScreen.storyboard */,
 				A8791A19232BD02A00089529 /* Info.plist */,
 			);
@@ -94,6 +105,39 @@
 				A8791A24232BD02B00089529 /* Info.plist */,
 			);
 			path = "FoursquareAPI-DemoTests";
+			sourceTree = "<group>";
+		};
+		A8791A2D232BD3DB00089529 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A8791A2E232BD3FD00089529 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A8791A2F232BD40300089529 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A8791A30232BD48000089529 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A8791A31232BD4B300089529 /* APIError.swift */,
+				A8791A32232BD4B300089529 /* APIClient.swift */,
+				A8791A33232BD4B300089529 /* Result.swift */,
+				A8791A39232BD4F300089529 /* FoursquareClient.swift */,
+				A8791A3B232BD58D00089529 /* Endpoint.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +241,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8791A10232BD02900089529 /* ViewController.swift in Sources */,
 				A8791A0E232BD02900089529 /* AppDelegate.swift in Sources */,
+				A8791A34232BD4B300089529 /* APIError.swift in Sources */,
+				A8791A36232BD4B300089529 /* Result.swift in Sources */,
+				A8791A35232BD4B300089529 /* APIClient.swift in Sources */,
+				A8791A3C232BD58D00089529 /* Endpoint.swift in Sources */,
+				A8791A3A232BD4F300089529 /* FoursquareClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
