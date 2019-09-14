@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreLocation
 
-class VenueListVC: UIViewController {
+class VenueListVC: UIViewController, CLLocationManagerDelegate {
 
     private let client = FoursquareClient()
+    var locationManager: CLLocationManager?
+   
     
     var venue = [Venues]()
     
@@ -19,13 +22,29 @@ class VenueListVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager?.requestWhenInUseAuthorization()
+        locationManager?.startUpdatingLocation()
         
         getVenue()
+        
+        
+        
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.longitude) \(locValue.latitude)")
+        
+    }
 
     func getVenue() {
-        client.getVenues(with: .search, query: "Supplementler", longitude: "41.111226", latitude: "29.024223") { [weak self] result in
+//        41.111226
+//        29.024223
+        
+        client.getVenues(with: .search, query: "Supplementler", latitude: "36.873809251151684", longitude: "30.65218424460133") { [weak self] result in
             
             switch result {
             case .success(let response):
@@ -50,16 +69,24 @@ extension VenueListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! VenueListCell
         let venues = venue[indexPath.row]
+        let categories = venues.categories[0]
         
-        cell.textLabel?.text = venues.location.address
+        cell.name.text = venues.name
+        cell.categoryName.text = categories.name
+        cell.distance.text = "\(venues.location.distance)m"
+        
         return cell
     }
     
     
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let venues = venue[indexPath.row]
+        let id = venues.id
+        print(id)
+    }
     
     
     

@@ -20,7 +20,7 @@ class FoursquareClient: APIClient {
         self.init(configuration: .default)
     }
     
-    func getVenues(with endpoint: FoursquareEnum, query: String, longitude: String, latitude: String, completion: @escaping (Result<FoursquareAPIResponse?, APIError>) -> Void) {
+    func getVenues(with endpoint: FoursquareEnum, query: String, latitude: String, longitude: String, completion: @escaping (Result<FoursquareAPIResponse?, APIError>) -> Void) {
         
         
         
@@ -28,7 +28,7 @@ class FoursquareClient: APIClient {
         urlComponents.scheme = "https"
         urlComponents.host = endpoint.base
         urlComponents.path = endpoint.path
-        let queryItems = [URLQueryItem(name: "ll", value: "\(longitude),\(latitude)"), URLQueryItem(name: "v", value: "20190507"), URLQueryItem(name: "intent", value: "browse"), URLQueryItem(name: "radius", value: "10000"), URLQueryItem(name: "query", value: query), URLQueryItem(name: "client_id", value: clientID), URLQueryItem(name: "client_secret", value: clientSecret)]
+        let queryItems = [URLQueryItem(name: "ll", value: "\(latitude),\(longitude)"), URLQueryItem(name: "v", value: "20190507"), URLQueryItem(name: "intent", value: "browse"), URLQueryItem(name: "radius", value: "10000"), URLQueryItem(name: "query", value: query), URLQueryItem(name: "client_id", value: clientID), URLQueryItem(name: "client_secret", value: clientSecret)]
         urlComponents.queryItems = queryItems
         
         
