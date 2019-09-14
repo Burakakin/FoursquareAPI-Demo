@@ -85,14 +85,27 @@
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFE-Ir-msb">
+                                <rect key="frame" x="348" y="36" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Y8A-gg-Ne8"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="e2o-kI-owl" kind="show" identifier="locationRetrieve" id="Xb5-OC-NiE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="mD0-uA-dWs" secondAttribute="bottom" id="50m-7j-Syh"/>
                             <constraint firstItem="mD0-uA-dWs" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Us6-d5-tfU"/>
                             <constraint firstItem="0pS-OE-VMG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aFj-aQ-JaP"/>
+                            <constraint firstItem="BFE-Ir-msb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="36" id="brV-Pt-pbI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BFE-Ir-msb" secondAttribute="trailing" constant="20" id="fLK-Y6-68n"/>
                             <constraint firstItem="0pS-OE-VMG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="hpu-Eu-2v0"/>
                             <constraint firstItem="mD0-uA-dWs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jEy-ph-rGe"/>
+                            <constraint firstItem="0pS-OE-VMG" firstAttribute="top" secondItem="BFE-Ir-msb" secondAttribute="bottom" constant="8" id="px4-Vy-w6j"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0pS-OE-VMG" secondAttribute="trailing" id="qC7-7V-mGa"/>
                             <constraint firstItem="mD0-uA-dWs" firstAttribute="top" secondItem="0pS-OE-VMG" secondAttribute="bottom" constant="21" id="zmy-C8-2P0"/>
                         </constraints>
@@ -107,6 +120,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="101.78571428571428"/>
+        </scene>
+        <!--Location SelectionVC-->
+        <scene sceneID="OGY-Fi-dJl">
+            <objects>
+                <viewController id="e2o-kI-owl" customClass="LocationSelectionVC" customModule="FoursquareAPI_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rdU-k0-qEf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Myc-lb-dGP">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <connections>
+                                    <outlet property="delegate" destination="e2o-kI-owl" id="8U7-U5-Ox4"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dYU-MS-JF2" firstAttribute="trailing" secondItem="Myc-lb-dGP" secondAttribute="trailing" id="895-GO-2Zl"/>
+                            <constraint firstItem="dYU-MS-JF2" firstAttribute="bottom" secondItem="Myc-lb-dGP" secondAttribute="bottom" id="KiW-y2-3jG"/>
+                            <constraint firstItem="Myc-lb-dGP" firstAttribute="leading" secondItem="dYU-MS-JF2" secondAttribute="leading" id="Y3g-2b-5Ao"/>
+                            <constraint firstItem="Myc-lb-dGP" firstAttribute="top" secondItem="rdU-k0-qEf" secondAttribute="top" id="fIF-pQ-Z9l"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dYU-MS-JF2"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Myc-lb-dGP" id="6sb-h1-IN4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9rV-fR-1Qe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="901.33928571428567"/>
         </scene>
         <!--Venue DetailVC-->
         <scene sceneID="Ps9-wm-E2r">

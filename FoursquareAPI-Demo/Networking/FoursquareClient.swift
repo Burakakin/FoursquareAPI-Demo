@@ -33,6 +33,7 @@ class FoursquareClient: APIClient {
         
         
         let url = URL(string: urlComponents.url!.absoluteString)!
+        print(url)
         
         fetch(with: url, decode: { (json) in
             guard let wholeResponse = json as? FoursquareAPIResponse else { return  nil }
