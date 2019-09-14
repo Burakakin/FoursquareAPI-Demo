@@ -36,7 +36,11 @@ class VenueDetailVC: UIViewController {
         addressLabel.text = fullAdress
     }
     
-
+    @IBAction func Dismiss(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
     
 
 }

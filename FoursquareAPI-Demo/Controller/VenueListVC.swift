@@ -72,23 +72,23 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate {
         
     }
 
-    func getVenue() {
-//        41.111226
-//        29.024223
-        client.getVenues(with: .search, query: "Supplementler", latitude: "36.873809251151684", longitude: "30.65218424460133") { [weak self] result in
-            
-            switch result {
-            case .success(let response):
-                guard let response = response?.response.venues else { return }
-                self?.venue.append(contentsOf: response)
-                DispatchQueue.main.async {
-                    self!.venueListTableView.reloadData()
-                }
-            case .failure(let error):
-                print("the error \(error)")
-            }
-        }
-    }
+//    func getVenue() {
+////        41.111226
+////        29.024223
+//        client.getVenues(with: .search, query: "Supplementler", latitude: "36.873809251151684", longitude: "30.65218424460133") { [weak self] result in
+//
+//            switch result {
+//            case .success(let response):
+//                guard let response = response?.response.venues else { return }
+//                self?.venue.append(contentsOf: response)
+//                DispatchQueue.main.async {
+//                    self!.venueListTableView.reloadData()
+//                }
+//            case .failure(let error):
+//                print("the error \(error)")
+//            }
+//        }
+//    }
 
 }
 
