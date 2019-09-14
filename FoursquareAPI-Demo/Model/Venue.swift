@@ -28,6 +28,7 @@ struct Location: Decodable {
     let lat: Double
     let lng: Double
     let distance: Int
+    let formattedAddress: [String]?
 }
 
 struct Categories: Decodable {

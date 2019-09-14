@@ -20,6 +20,7 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var keywordTextField: UITextField!
     @IBOutlet weak var venueListTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -112,12 +113,32 @@ extension VenueListVC: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let venues = venue[indexPath.row]
-        let id = venues.id
-        print(id)
+        performSegue(withIdentifier: "showDetail", sender: indexPath)
+        
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let indexPath = self.venueListTableView.indexPathForSelectedRow!
+        let venueDetail = venue[indexPath.row]
+        if segue.identifier == "showDetail" {
+            if let vc = segue.destination as? VenueDetailVC {
+                vc.name = venueDetail.name
+                vc.categoryName = venueDetail.categories[0].name
+                vc.formattedAddress = venueDetail.location.formattedAddress
+                vc.coordinate = CLLocationCoordinate2D(latitude: venueDetail.location.lat, longitude: venueDetail.location.lng)
+               
+            }
+            
+           
+            
+            
+            
+            
+            
+        }
+        
+        
+    }
     
     
 }
