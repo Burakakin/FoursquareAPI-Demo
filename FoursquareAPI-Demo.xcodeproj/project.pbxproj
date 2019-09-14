@@ -91,10 +91,10 @@
 		A8791A0C232BD02900089529 /* FoursquareAPI-Demo */ = {
 			isa = PBXGroup;
 			children = (
-				A8791A2F232BD40300089529 /* Controller */,
-				A8791A2E232BD3FD00089529 /* View */,
-				A8791A2D232BD3DB00089529 /* Model */,
 				A8791A30232BD48000089529 /* Networking */,
+				A8791A2D232BD3DB00089529 /* Model */,
+				A8791A2E232BD3FD00089529 /* View */,
+				A8791A2F232BD40300089529 /* Controller */,
 				A8791A11232BD02900089529 /* Main.storyboard */,
 				A8791A14232BD02A00089529 /* Assets.xcassets */,
 				A8791A0D232BD02900089529 /* AppDelegate.swift */,

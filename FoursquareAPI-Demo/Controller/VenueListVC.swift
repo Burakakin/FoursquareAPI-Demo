@@ -13,22 +13,29 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate {
 
     private let client = FoursquareClient()
     var locationManager: CLLocationManager?
-   
+  
+    var flag = true
     
     var venue = [Venues]()
     
+    @IBOutlet weak var keywordTextField: UITextField!
     @IBOutlet weak var venueListTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        keywordTextField.setLeftPaddingPoints(10)
         // Do any additional setup after loading the view.
         locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+       
         locationManager?.requestWhenInUseAuthorization()
-        locationManager?.startUpdatingLocation()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager?.delegate = self
+            locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager?.startUpdatingLocation()
+        }
         
-        getVenue()
+        
+//        getVenue()
         
         
         
@@ -36,14 +43,37 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.longitude) \(locValue.latitude)")
+        
+        
+        
+        if flag {
+            print("locations = \(locValue.latitude) \(locValue.longitude)")
+            
+            client.getVenues(with: .search, query: "Supplementler", latitude: "\(locValue.latitude)", longitude: "\(locValue.longitude)") { [weak self] result in
+                
+                switch result {
+                case .success(let response):
+                    guard let response = response?.response.venues else { return }
+                    self?.venue.append(contentsOf: response)
+                    DispatchQueue.main.async {
+                        self!.venueListTableView.reloadData()
+                    }
+                //                print(self!.venue[0].id)
+                case .failure(let error):
+                    print("the error \(error)")
+                }
+            }
+            
+            locationManager!.stopUpdatingLocation()
+            flag = false
+           
+        }
         
     }
 
     func getVenue() {
 //        41.111226
 //        29.024223
-        
         client.getVenues(with: .search, query: "Supplementler", latitude: "36.873809251151684", longitude: "30.65218424460133") { [weak self] result in
             
             switch result {
@@ -53,7 +83,6 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate {
                 DispatchQueue.main.async {
                     self!.venueListTableView.reloadData()
                 }
-//                print(self!.venue[0].id)
             case .failure(let error):
                 print("the error \(error)")
             }
@@ -91,4 +120,17 @@ extension VenueListVC: UITableViewDelegate, UITableViewDataSource {
     
     
     
+}
+
+extension UITextField {
+    func setLeftPaddingPoints(_ amount:CGFloat){
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
+    func setRightPaddingPoints(_ amount:CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.rightView = paddingView
+        self.rightViewMode = .always
+    }
 }
