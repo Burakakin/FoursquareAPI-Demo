@@ -50,7 +50,7 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
         }
         
         keywordTextField.delegate = self
-        
+        keywordTextField.addBottomBorder()
        
     }
     
@@ -99,6 +99,7 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
     func textFieldDidEndEditing(_ textField: UITextField) {
         keyword = keywordTextField.text ?? ""
         
+        venue.removeAll()
         getVenue(query: keyword, latitude: "\(localCoordinate.latitude)", longitude: "\(localCoordinate.longitude)")
     }
 
@@ -175,4 +176,13 @@ extension UITextField {
         self.rightView = paddingView
         self.rightViewMode = .always
     }
+    
+    func addBottomBorder(){
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRect.init(x: 10, y: self.frame.size.height - 1, width: self.frame.size.width, height: 1)
+        bottomLine.backgroundColor = UIColor.lightGray.cgColor
+        self.layer.addSublayer(bottomLine)
+        
+    }
 }
+
