@@ -24,6 +24,8 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
     var flag = true
     
     var venue = [Venues]()
+    var keyword: String = ""
+    var localCoordinate: CLLocationCoordinate2D!
     
     @IBOutlet weak var keywordTextField: UITextField!
     @IBOutlet weak var venueListTableView: UITableView!
@@ -52,15 +54,23 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
        
     }
     
+    @IBAction func performSegueBarButton(_ sender: UIButton) {
+        
+        if let keyword = keywordTextField.text, !keyword.isEmpty {
+            performSegue(withIdentifier: "locationRetrieve", sender: self)
+        }else {
+            print("Enter a Keyword")
+        }
+        
+        
+    }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         
         
         
         if flag {
-            guard let keyword = keywordTextField.text, !keyword.isEmpty else { return }
-            getVenue(query: keyword, latitude: "\(locValue.latitude)", longitude: "\(locValue.longitude)")
-           
+            localCoordinate = locValue
             locationManager!.stopUpdatingLocation()
             flag = false
            
@@ -86,7 +96,11 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
         }
     }
     
-    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        keyword = keywordTextField.text ?? ""
+        
+        getVenue(query: keyword, latitude: "\(localCoordinate.latitude)", longitude: "\(localCoordinate.longitude)")
+    }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -103,10 +117,10 @@ extension VenueListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! VenueListCell
         let venues = venue[indexPath.row]
-        let categories = venues.categories[0]
+        let categories = venues.categories?[0]
         
         cell.name.text = venues.name
-        cell.categoryName.text = categories.name
+        cell.categoryName.text = categories?.name
         cell.distance.text = "\(venues.location.distance)m"
         
         return cell
@@ -126,7 +140,7 @@ extension VenueListVC: UITableViewDelegate, UITableViewDataSource {
             let venueDetail = venue[indexPath.row]
             if let vc = segue.destination as? VenueDetailVC {
                 vc.name = venueDetail.name
-                vc.categoryName = venueDetail.categories[0].name
+                vc.categoryName = venueDetail.categories?[0].name
                 vc.formattedAddress = venueDetail.location.formattedAddress
                 vc.coordinate = CLLocationCoordinate2D(latitude: venueDetail.location.lat, longitude: venueDetail.location.lng)
                
@@ -134,11 +148,14 @@ extension VenueListVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         if segue.identifier == "locationRetrieve" {
-            if let vc = segue.destination as? LocationSelectionVC {
-                vc.delegate = self
+            if let keyword = keywordTextField.text, !keyword.isEmpty {
+                if let vc = segue.destination as? LocationSelectionVC {
+                    vc.delegate = self
+                }
+                
+                
             }
-            
-            
+           
         }
         
         

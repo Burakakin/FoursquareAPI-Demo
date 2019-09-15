@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Venue ListVC-->
+        <!--FoursquareAPI-Demo-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="VenueListVC" customModule="FoursquareAPI_Demo" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mD0-uA-dWs">
-                                <rect key="frame" x="0.0" y="200" width="414" height="696"/>
+                                <rect key="frame" x="0.0" y="179" width="414" height="717"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="90" id="40A-mb-qWg" customClass="VenueListCell" customModule="FoursquareAPI_Demo" customModuleProvider="target">
@@ -30,16 +30,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="zrI-Wk-hxG">
-                                                    <rect key="frame" x="5" y="5" width="329" height="80"/>
+                                                    <rect key="frame" x="10" y="5" width="324" height="80"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="jNA-2Y-bOI">
-                                                            <rect key="frame" x="0.0" y="0.0" width="329" height="42"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="jNA-2Y-bOI">
+                                                            <rect key="frame" x="0.0" y="0.0" width="324" height="42"/>
                                                             <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EMo-ZR-l1m">
-                                                            <rect key="frame" x="0.0" y="42" width="329" height="38"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="EMo-ZR-l1m">
+                                                            <rect key="frame" x="0.0" y="42" width="324" height="38"/>
                                                             <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="18"/>
                                                             <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -60,7 +60,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="OdP-Wo-KpZ" secondAttribute="bottom" constant="10" id="gB1-WH-q0B"/>
                                                 <constraint firstItem="OdP-Wo-KpZ" firstAttribute="top" secondItem="YIO-xv-ExT" secondAttribute="top" constant="10" id="hFH-pL-kJs"/>
                                                 <constraint firstItem="OdP-Wo-KpZ" firstAttribute="leading" secondItem="zrI-Wk-hxG" secondAttribute="trailing" constant="8" id="nfi-j7-ZDs"/>
-                                                <constraint firstItem="zrI-Wk-hxG" firstAttribute="leading" secondItem="YIO-xv-ExT" secondAttribute="leading" constant="5" id="u8B-Jy-DOv"/>
+                                                <constraint firstItem="zrI-Wk-hxG" firstAttribute="leading" secondItem="YIO-xv-ExT" secondAttribute="leading" constant="10" id="u8B-Jy-DOv"/>
                                                 <constraint firstItem="zrI-Wk-hxG" firstAttribute="top" secondItem="YIO-xv-ExT" secondAttribute="top" constant="5" id="vS2-aM-rMF"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -76,7 +76,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="cIg-Pu-Tfv"/>
                                 </connections>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter Keyword" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0pS-OE-VMG">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Keyword" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0pS-OE-VMG">
                                 <rect key="frame" x="0.0" y="118" width="414" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="qJC-Yr-nXB"/>
@@ -94,11 +94,11 @@
                             <constraint firstItem="0pS-OE-VMG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="hpu-Eu-2v0"/>
                             <constraint firstItem="mD0-uA-dWs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jEy-ph-rGe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0pS-OE-VMG" secondAttribute="trailing" id="qC7-7V-mGa"/>
-                            <constraint firstItem="mD0-uA-dWs" firstAttribute="top" secondItem="0pS-OE-VMG" secondAttribute="bottom" constant="21" id="zmy-C8-2P0"/>
+                            <constraint firstItem="mD0-uA-dWs" firstAttribute="top" secondItem="0pS-OE-VMG" secondAttribute="bottom" id="zmy-C8-2P0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="6cl-fW-VjX">
+                    <navigationItem key="navigationItem" title="FoursquareAPI-Demo" largeTitleDisplayMode="always" id="6cl-fW-VjX">
                         <barButtonItem key="backBarButtonItem" title=" " id="l3l-hS-mwo"/>
                         <rightBarButtonItems>
                             <barButtonItem id="FUL-as-iCq">
@@ -107,7 +107,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="search"/>
                                     <connections>
-                                        <segue destination="e2o-kI-owl" kind="show" identifier="locationRetrieve" id="Xb5-OC-NiE"/>
+                                        <action selector="performSegueBarButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZA0-SW-UZW"/>
                                     </connections>
                                 </button>
                             </barButtonItem>
@@ -124,6 +124,7 @@
                         <outlet property="keywordTextField" destination="0pS-OE-VMG" id="4fr-gF-B6x"/>
                         <outlet property="venueListTableView" destination="mD0-uA-dWs" id="jpu-NX-l1I"/>
                         <segue destination="eaa-QC-W1c" kind="show" identifier="showDetail" id="sjJ-fY-2ax"/>
+                        <segue destination="e2o-kI-owl" kind="show" identifier="locationRetrieve" id="I0Q-UW-wK8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

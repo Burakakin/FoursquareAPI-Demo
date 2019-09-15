@@ -20,7 +20,7 @@ struct Venues: Decodable {
     let id: String
     let name: String
     let location: Location
-    let categories: [Categories]
+    let categories: [Categories]?
 }
 
 struct Location: Decodable {
