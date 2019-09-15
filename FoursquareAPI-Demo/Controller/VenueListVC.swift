@@ -9,11 +9,12 @@
 import UIKit
 import CoreLocation
 
-class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol {
+class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol, UITextFieldDelegate {
     
     func sendDataToFirstViewController(myData: CLLocationCoordinate2D) {
         venue.removeAll()
-        getVenue(latitude: "\(myData.latitude)", longitude: "\(myData.longitude)")
+        guard let keyword = keywordTextField.text, !keyword.isEmpty else { return }
+        getVenue(query: keyword, latitude: "\(myData.latitude)", longitude: "\(myData.longitude)")
     }
     
 
@@ -30,6 +31,11 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+        
         keywordTextField.setLeftPaddingPoints(10)
         // Do any additional setup after loading the view.
         locationManager = CLLocationManager()
@@ -41,11 +47,9 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
             locationManager?.startUpdatingLocation()
         }
         
+        keywordTextField.delegate = self
         
-//        getVenue()
-        
-        
-        
+       
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -54,9 +58,8 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
         
         
         if flag {
-//            print("locations = \(locValue.latitude) \(locValue.longitude)")
-            
-            getVenue(latitude: "\(locValue.latitude)", longitude: "\(locValue.longitude)")
+            guard let keyword = keywordTextField.text, !keyword.isEmpty else { return }
+            getVenue(query: keyword, latitude: "\(locValue.latitude)", longitude: "\(locValue.longitude)")
            
             locationManager!.stopUpdatingLocation()
             flag = false
@@ -65,10 +68,10 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
         
     }
 
-    func getVenue(latitude: String, longitude: String ) {
+    func getVenue(query: String, latitude: String, longitude: String ) {
 //        41.111226
 //        29.024223
-        client.getVenues(with: .search, query: "Supplementler", latitude: latitude, longitude: longitude) { [weak self] result in
+        client.getVenues(with: .search, query: query, latitude: latitude, longitude: longitude) { [weak self] result in
 
             switch result {
             case .success(let response):
@@ -82,7 +85,13 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
             }
         }
     }
+    
+    
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
 }
 
 

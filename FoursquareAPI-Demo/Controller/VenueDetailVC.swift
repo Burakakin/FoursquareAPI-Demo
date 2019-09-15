@@ -25,6 +25,11 @@ class VenueDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+        
         let mapAnnotation = VenueMap(title: name, coordinate: coordinate)
        mapView.addAnnotation(mapAnnotation)
         
@@ -35,12 +40,6 @@ class VenueDetailVC: UIViewController {
         }
         addressLabel.text = fullAdress
     }
-    
-    @IBAction func Dismiss(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
-    }
-    
     
 
 }
