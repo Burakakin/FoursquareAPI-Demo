@@ -11,13 +11,6 @@ import CoreLocation
 
 class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol, UITextFieldDelegate {
     
-    func sendDataToFirstViewController(myData: CLLocationCoordinate2D) {
-        venue.removeAll()
-        guard let keyword = keywordTextField.text, !keyword.isEmpty else { return }
-        getVenue(query: keyword, latitude: "\(myData.latitude)", longitude: "\(myData.longitude)")
-    }
-    
-
     private let client = FoursquareClient()
     var locationManager: CLLocationManager?
   
@@ -56,7 +49,14 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
        
     }
     
-    fileprivate func keywordDoneButton() {
+    func sendDataToFirstViewController(myData: CLLocationCoordinate2D) {
+        venue.removeAll()
+        guard let keyword = keywordTextField.text, !keyword.isEmpty else { return }
+        localCoordinate = myData
+        getVenue(query: keyword, latitude: "\(myData.latitude)", longitude: "\(myData.longitude)")
+    }
+    
+     func keywordDoneButton() {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         doneToolbar.barStyle = .default
         
@@ -177,7 +177,7 @@ extension VenueListVC: UITableViewDelegate, UITableViewDataSource {
                 vc.categoryName = venueDetail.categories?[0].name
                 vc.formattedAddress = venueDetail.location.formattedAddress
                 vc.coordinate = CLLocationCoordinate2D(latitude: venueDetail.location.lat, longitude: venueDetail.location.lng)
-               
+               vc.localCoordinate = localCoordinate
             }
         }
         

@@ -13,6 +13,7 @@ class VenueDetailVC: UIViewController {
 
     var name: String!
     var coordinate: CLLocationCoordinate2D!
+    var localCoordinate: CLLocationCoordinate2D!
     var categoryName: String!
     var formattedAddress: [String]?
     var fullAdress: String = ""
@@ -39,6 +40,19 @@ class VenueDetailVC: UIViewController {
            fullAdress += address + "\n"
         }
         addressLabel.text = fullAdress
+        
+        
+        
+       
+        let viewRegion = MKCoordinateRegion(center: localCoordinate, latitudinalMeters: 40000, longitudinalMeters: 40000)
+        mapView.setRegion(viewRegion, animated: false)
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        mapView.removeFromSuperview()
+        
     }
     
 
