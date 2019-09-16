@@ -33,13 +33,13 @@
                                                     <rect key="frame" x="10" y="5" width="324" height="80"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="jNA-2Y-bOI">
-                                                            <rect key="frame" x="0.0" y="0.0" width="324" height="42"/>
-                                                            <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="20"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="324" height="45"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="EMo-ZR-l1m">
-                                                            <rect key="frame" x="0.0" y="42" width="324" height="38"/>
+                                                            <rect key="frame" x="0.0" y="45" width="324" height="35"/>
                                                             <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="18"/>
                                                             <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -116,6 +116,9 @@
                                     <rect key="frame" x="322" y="6" width="32" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="showOnMap"/>
+                                    <connections>
+                                        <action selector="performSegueVenuesOnMap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VG6-pl-iO3"/>
+                                    </connections>
                                 </button>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -125,6 +128,7 @@
                         <outlet property="venueListTableView" destination="mD0-uA-dWs" id="jpu-NX-l1I"/>
                         <segue destination="eaa-QC-W1c" kind="show" identifier="showDetail" id="sjJ-fY-2ax"/>
                         <segue destination="e2o-kI-owl" kind="show" identifier="locationRetrieve" id="I0Q-UW-wK8"/>
+                        <segue destination="W2X-yX-Jec" kind="show" identifier="venuesOnMap" id="sBd-7W-82k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -140,7 +144,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Myc-lb-dGP">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <connections>
                                     <outlet property="delegate" destination="e2o-kI-owl" id="8U7-U5-Ox4"/>
                                 </connections>
@@ -149,7 +153,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dYU-MS-JF2" firstAttribute="trailing" secondItem="Myc-lb-dGP" secondAttribute="trailing" id="895-GO-2Zl"/>
-                            <constraint firstItem="dYU-MS-JF2" firstAttribute="bottom" secondItem="Myc-lb-dGP" secondAttribute="bottom" id="KiW-y2-3jG"/>
+                            <constraint firstAttribute="bottom" secondItem="Myc-lb-dGP" secondAttribute="bottom" id="Kim-50-jrV"/>
                             <constraint firstItem="Myc-lb-dGP" firstAttribute="leading" secondItem="dYU-MS-JF2" secondAttribute="leading" id="Y3g-2b-5Ao"/>
                             <constraint firstItem="Myc-lb-dGP" firstAttribute="top" secondItem="rdU-k0-qEf" secondAttribute="top" id="fIF-pQ-Z9l"/>
                         </constraints>
@@ -161,7 +165,39 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rV-fR-1Qe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="907"/>
+            <point key="canvasLocation" x="760.86956521739137" y="906.69642857142856"/>
+        </scene>
+        <!--Venues On MapVC-->
+        <scene sceneID="MGR-Yl-2FY">
+            <objects>
+                <viewController id="W2X-yX-Jec" customClass="VenuesOnMapVC" customModule="FoursquareAPI_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lIT-Xf-dl8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gCu-pw-Ar2">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <connections>
+                                    <outlet property="delegate" destination="W2X-yX-Jec" id="0QI-hu-BL6"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="gCu-pw-Ar2" secondAttribute="bottom" id="0pV-5s-r9B"/>
+                            <constraint firstItem="gCu-pw-Ar2" firstAttribute="top" secondItem="lIT-Xf-dl8" secondAttribute="top" id="DjU-fk-vRD"/>
+                            <constraint firstItem="gCu-pw-Ar2" firstAttribute="leading" secondItem="n4l-VE-VdH" secondAttribute="leading" id="WaI-UD-Dcf"/>
+                            <constraint firstItem="gCu-pw-Ar2" firstAttribute="trailing" secondItem="n4l-VE-VdH" secondAttribute="trailing" id="yms-Oq-Ihl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="n4l-VE-VdH"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="gCu-pw-Ar2" id="ZjT-QN-gsR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1iy-hY-xhd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1426.0869565217392" y="906.69642857142856"/>
         </scene>
         <!--Venue DetailVC-->
         <scene sceneID="Ps9-wm-E2r">

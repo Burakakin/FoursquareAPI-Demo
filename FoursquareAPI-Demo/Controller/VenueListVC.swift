@@ -51,7 +51,27 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
         
         keywordTextField.delegate = self
         keywordTextField.addBottomBorder()
+        
+        keywordDoneButton()
        
+    }
+    
+    fileprivate func keywordDoneButton() {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneTapped))
+        
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        keywordTextField.inputAccessoryView = doneToolbar
+    }
+    
+    @objc func doneTapped(){
+        keywordTextField.resignFirstResponder()
     }
     
     @IBAction func performSegueBarButton(_ sender: UIButton) {
@@ -59,23 +79,27 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
         if let keyword = keywordTextField.text, !keyword.isEmpty {
             performSegue(withIdentifier: "locationRetrieve", sender: self)
         }else {
-            print("Enter a Keyword")
+            presentAlert(withTitle: "Please", message: "Enter a Keyword")
         }
-        
-        
     }
+    
+    @IBAction func performSegueVenuesOnMap(_ sender: UIButton) {
+        if let keyword = keywordTextField.text, !keyword.isEmpty {
+            performSegue(withIdentifier: "venuesOnMap", sender: self)
+        }else {
+            presentAlert(withTitle: "Please", message: "Enter a Keyword")
+        }
+    }
+    
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        
-        
-        
+
         if flag {
             localCoordinate = locValue
             locationManager!.stopUpdatingLocation()
             flag = false
-           
         }
-        
     }
 
     func getVenue(query: String, latitude: String, longitude: String ) {
@@ -99,8 +123,14 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
     func textFieldDidEndEditing(_ textField: UITextField) {
         keyword = keywordTextField.text ?? ""
         
-        venue.removeAll()
-        getVenue(query: keyword, latitude: "\(localCoordinate.latitude)", longitude: "\(localCoordinate.longitude)")
+        if keyword == "" {
+            
+        }
+        else {
+            venue.removeAll()
+            getVenue(query: keyword, latitude: "\(localCoordinate.latitude)", longitude: "\(localCoordinate.longitude)")
+        }
+        
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -112,18 +142,21 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
 
 extension VenueListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if venue.count == 0 {
+            venueListTableView.setEmptyView(title: "Enter a Keyword", message: "Your venues will be here.")
+        }
+        else {
+            venueListTableView.restore()
+        }
         return venue.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! VenueListCell
         let venues = venue[indexPath.row]
-        let categories = venues.categories?[0]
         
-        cell.name.text = venues.name
-        cell.categoryName.text = categories?.name
-        cell.distance.text = "\(venues.location.distance)m"
-        
+        cell.configureCell(venues: venues)
+
         return cell
     }
     
@@ -153,10 +186,18 @@ extension VenueListVC: UITableViewDelegate, UITableViewDataSource {
                 if let vc = segue.destination as? LocationSelectionVC {
                     vc.delegate = self
                 }
-                
-                
             }
            
+        }
+        
+        if segue.identifier == "venuesOnMap" {
+            if let vc = segue.destination as? VenuesOnMapVC {
+                var coordinates = [CLLocationCoordinate2D]()
+                for venueCoordinates in venue {
+                   coordinates.append(CLLocationCoordinate2D(latitude: venueCoordinates.location.lat, longitude: venueCoordinates.location.lng))
+                }
+                vc.coordinates = coordinates
+            }
         }
         
         
@@ -165,24 +206,6 @@ extension VenueListVC: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension UITextField {
-    func setLeftPaddingPoints(_ amount:CGFloat){
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
-        self.leftView = paddingView
-        self.leftViewMode = .always
-    }
-    func setRightPaddingPoints(_ amount:CGFloat) {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
-        self.rightView = paddingView
-        self.rightViewMode = .always
-    }
-    
-    func addBottomBorder(){
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect.init(x: 10, y: self.frame.size.height - 1, width: self.frame.size.width, height: 1)
-        bottomLine.backgroundColor = UIColor.lightGray.cgColor
-        self.layer.addSublayer(bottomLine)
-        
-    }
-}
+
+
 

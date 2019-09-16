@@ -25,5 +25,13 @@ class VenueListCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func configureCell(venues: Venues) {
+        let categories = venues.categories?[0]
+        
+        name.text = venues.name
+        categoryName.text = categories?.name
+        distance.text = "\(venues.location.distance)m"
+    }
 
 }
