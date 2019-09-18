@@ -105,8 +105,7 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
     func getVenue(query: String, latitude: String, longitude: String ) {
 //        41.111226
 //        29.024223
-        client.getVenues(with: .search, query: query, latitude: latitude, longitude: longitude) { [weak self] result in
-
+        client.getVenues(with: .search(lattitude: latitude, longitude: longitude, query: query)) { [weak self] result in
             switch result {
             case .success(let response):
                 guard let response = response?.response.venues else { return }
