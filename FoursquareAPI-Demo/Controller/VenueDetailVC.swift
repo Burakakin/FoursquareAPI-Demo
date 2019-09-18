@@ -55,5 +55,9 @@ class VenueDetailVC: UIViewController {
         
     }
     
+    @IBAction func dismissView(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 
 }

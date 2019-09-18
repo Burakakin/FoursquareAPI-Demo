@@ -31,7 +31,7 @@ class VenueListCell: UITableViewCell {
         
         name.text = venues.name
         categoryName.text = categories?.name
-        distance.text = "\(Double(venues.location.distance)/100.0)km"
+        distance.text = "\(Double(venues.location.distance)/1000.0)km"
     }
 
 }

@@ -10,6 +10,7 @@
 		A82C4722232C833400D0E92B /* VenueDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82C4721232C833400D0E92B /* VenueDetailVC.swift */; };
 		A82C4724232C83D000D0E92B /* VenueMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82C4723232C83D000D0E92B /* VenueMap.swift */; };
 		A82C4726232CA11B00D0E92B /* LocationSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82C4725232CA11B00D0E92B /* LocationSelectionVC.swift */; };
+		A8684F802330A32D002D6489 /* ScaleSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8684F7F2330A32D002D6489 /* ScaleSegue.swift */; };
 		A8791A0E232BD02900089529 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A0D232BD02900089529 /* AppDelegate.swift */; };
 		A8791A13232BD02900089529 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8791A11232BD02900089529 /* Main.storyboard */; };
 		A8791A15232BD02A00089529 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8791A14232BD02A00089529 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		A82C4721232C833400D0E92B /* VenueDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueDetailVC.swift; sourceTree = "<group>"; };
 		A82C4723232C83D000D0E92B /* VenueMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueMap.swift; sourceTree = "<group>"; };
 		A82C4725232CA11B00D0E92B /* LocationSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectionVC.swift; sourceTree = "<group>"; };
+		A8684F7F2330A32D002D6489 /* ScaleSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleSegue.swift; sourceTree = "<group>"; };
 		A8791A0A232BD02900089529 /* FoursquareAPI-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FoursquareAPI-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8791A0D232BD02900089529 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8791A12232BD02900089529 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				A8791A43232C586500089529 /* VenueListCell.swift */,
+				A8684F7F2330A32D002D6489 /* ScaleSegue.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				A8791A42232BFF5E00089529 /* VenueListVC.swift in Sources */,
 				A82C4724232C83D000D0E92B /* VenueMap.swift in Sources */,
 				A8791A35232BD4B300089529 /* APIClient.swift in Sources */,
+				A8684F802330A32D002D6489 /* ScaleSegue.swift in Sources */,
 				A8791A3C232BD58D00089529 /* Endpoint.swift in Sources */,
 				A8791A3A232BD4F300089529 /* FoursquareClient.swift in Sources */,
 			);

@@ -126,7 +126,7 @@
                     <connections>
                         <outlet property="keywordTextField" destination="0pS-OE-VMG" id="4fr-gF-B6x"/>
                         <outlet property="venueListTableView" destination="mD0-uA-dWs" id="jpu-NX-l1I"/>
-                        <segue destination="eaa-QC-W1c" kind="show" identifier="showDetail" id="sjJ-fY-2ax"/>
+                        <segue destination="eaa-QC-W1c" kind="custom" identifier="showDetail" customClass="ScaleSegue" customModule="FoursquareAPI_Demo" customModuleProvider="target" id="sjJ-fY-2ax"/>
                         <segue destination="e2o-kI-owl" kind="show" identifier="locationRetrieve" id="I0Q-UW-wK8"/>
                         <segue destination="W2X-yX-Jec" kind="show" identifier="venuesOnMap" id="sBd-7W-82k"/>
                     </connections>
@@ -242,14 +242,27 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1L-s3-OfH">
+                                <rect key="frame" x="347" y="40" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4iB-a2-fAM"/>
+                                    <constraint firstAttribute="width" constant="40" id="Lyh-Yb-uVQ"/>
+                                </constraints>
+                                <state key="normal" image="closeButton"/>
+                                <connections>
+                                    <action selector="dismissView:" destination="eaa-QC-W1c" eventType="touchUpInside" id="cxJ-DG-KXc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5i0-ZN-2Gr" firstAttribute="bottom" secondItem="pw4-fR-Kmc" secondAttribute="bottom" constant="200" id="H2Z-ZN-hG2"/>
+                            <constraint firstItem="5i0-ZN-2Gr" firstAttribute="trailing" secondItem="v1L-s3-OfH" secondAttribute="trailing" constant="27" id="KHo-lL-2T9"/>
                             <constraint firstItem="5i0-ZN-2Gr" firstAttribute="trailing" secondItem="c1w-Od-Zt8" secondAttribute="trailing" constant="10" id="O6U-mx-btG"/>
                             <constraint firstItem="5i0-ZN-2Gr" firstAttribute="bottom" secondItem="c1w-Od-Zt8" secondAttribute="bottom" constant="10" id="PKG-Gh-DfF"/>
                             <constraint firstItem="pw4-fR-Kmc" firstAttribute="trailing" secondItem="5i0-ZN-2Gr" secondAttribute="trailing" id="Q3a-Fe-8Rl"/>
                             <constraint firstItem="c1w-Od-Zt8" firstAttribute="leading" secondItem="5i0-ZN-2Gr" secondAttribute="leading" constant="10" id="ZeI-hE-nez"/>
+                            <constraint firstItem="v1L-s3-OfH" firstAttribute="top" secondItem="USc-ko-Tjo" secondAttribute="top" constant="40" id="fno-Q8-Ioh"/>
                             <constraint firstItem="pw4-fR-Kmc" firstAttribute="leading" secondItem="5i0-ZN-2Gr" secondAttribute="leading" id="mOD-0P-xKa"/>
                             <constraint firstItem="pw4-fR-Kmc" firstAttribute="top" secondItem="USc-ko-Tjo" secondAttribute="top" id="pNH-oA-wEx"/>
                             <constraint firstItem="c1w-Od-Zt8" firstAttribute="top" secondItem="pw4-fR-Kmc" secondAttribute="bottom" constant="10" id="s7q-gN-ucA"/>
@@ -287,6 +300,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="closeButton" width="32" height="32"/>
         <image name="search" width="32" height="32"/>
         <image name="showOnMap" width="32" height="32"/>
     </resources>

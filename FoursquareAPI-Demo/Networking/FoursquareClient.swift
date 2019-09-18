@@ -28,7 +28,7 @@ class FoursquareClient: APIClient {
         urlComponents.scheme = "https"
         urlComponents.host = endpoint.base
         urlComponents.path = endpoint.path
-        let queryItems = [URLQueryItem(name: "ll", value: "\(latitude),\(longitude)"), URLQueryItem(name: "v", value: "20190507"), URLQueryItem(name: "intent", value: "browse"), URLQueryItem(name: "radius", value: "10000"), URLQueryItem(name: "query", value: query), URLQueryItem(name: "client_id", value: clientID), URLQueryItem(name: "client_secret", value: clientSecret)]
+        let queryItems = [URLQueryItem(name: "ll", value: "\(latitude),\(longitude)"), URLQueryItem(name: "v", value: "20190507"), URLQueryItem(name: "intent", value: "browse"), URLQueryItem(name: "radius", value: "100000"), URLQueryItem(name: "query", value: query), URLQueryItem(name: "client_id", value: clientID), URLQueryItem(name: "client_secret", value: clientSecret)]
         urlComponents.queryItems = queryItems
         
         
