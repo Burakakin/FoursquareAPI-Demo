@@ -11,11 +11,11 @@ import MapKit
 
 class VenueDetailVC: UIViewController {
 
-    var name: String!
-    var coordinate: CLLocationCoordinate2D!
+    var venue: Venues!
+    private var client = FoursquareClient()
+    
+    var id: String!
     var localCoordinate: CLLocationCoordinate2D!
-    var categoryName: String!
-    var formattedAddress: [String]?
     var fullAdress: String = ""
     
     @IBOutlet weak var mapView: MKMapView!
@@ -31,12 +31,24 @@ class VenueDetailVC: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
-        let mapAnnotation = VenueMap(title: name, coordinate: coordinate)
+        client.getVenues(with: .venueDetail(venueID: id)) { [weak self] result in
+            switch result {
+            case .success(let response):
+                guard let response = response?.response.venues[0] else { return }
+                DispatchQueue.main.async {
+                    self?.venue = response
+                }
+            case .failure(let error):
+                print("the error \(error)")
+            }
+        }
+        
+        let mapAnnotation = VenueMap(title: venue.name, coordinate: CLLocationCoordinate2D(latitude: venue.location.lat, longitude: venue.location.lng))
        mapView.addAnnotation(mapAnnotation)
         
-        nameLabel.text = name
-        categoryNameLabel.text = categoryName
-        for address in formattedAddress! {
+        nameLabel.text = venue.name
+        categoryNameLabel.text = venue.categories?[0].name
+        for address in venue.location.formattedAddress! {
            fullAdress += address + "\n"
         }
         addressLabel.text = fullAdress

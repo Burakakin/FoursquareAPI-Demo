@@ -26,9 +26,8 @@ class FoursquareClient: APIClient {
             guard let wholeResponse = json as? FoursquareAPIResponse else { return  nil }
             return wholeResponse
         }, completion: completion)
-        
-        
     }
+    
     
     
 }

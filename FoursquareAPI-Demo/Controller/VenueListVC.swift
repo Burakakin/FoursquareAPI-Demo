@@ -172,10 +172,7 @@ extension VenueListVC: UITableViewDelegate, UITableViewDataSource {
             let indexPath = self.venueListTableView.indexPathForSelectedRow!
             let venueDetail = venue[indexPath.row]
             if let vc = segue.destination as? VenueDetailVC {
-                vc.name = venueDetail.name
-                vc.categoryName = venueDetail.categories?[0].name
-                vc.formattedAddress = venueDetail.location.formattedAddress
-                vc.coordinate = CLLocationCoordinate2D(latitude: venueDetail.location.lat, longitude: venueDetail.location.lng)
+               vc.id = venueDetail.id
                vc.localCoordinate = localCoordinate
             }
         }

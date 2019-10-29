@@ -38,7 +38,7 @@ extension Endpoint {
 
 enum FoursquareEnum {
     case search(lattitude: String, longitude: String, query: String)
-    case venueDetail(String)
+    case venueDetail(venueID: String)
 }
 
 extension FoursquareEnum: Endpoint {
@@ -54,7 +54,7 @@ extension FoursquareEnum: Endpoint {
         case .search:
             return "/v2/venues/search"
         case .venueDetail(let venueID):
-            return "/v2/venues/\(venueID)"
+            return "/v2/venues/\(venueID)" + "\(FoursquareEnum.apiKeyParam)"
         }
     }
     
@@ -63,11 +63,12 @@ extension FoursquareEnum: Endpoint {
         case .search(let latitude, let longitude, let query):
             return [URLQueryItem(name: "ll", value: "\(latitude),\(longitude)"), URLQueryItem(name: "v", value: "20190507"), URLQueryItem(name: "intent", value: "browse"), URLQueryItem(name: "radius", value: "100000"), URLQueryItem(name: "query", value: query)] + FoursquareEnum.apiKeyParam
         default:
-            return [URLQueryItem(name: "a", value: "a")]
+            return []
+            
         }
+        
+        
     }
     
     
 }
-
-

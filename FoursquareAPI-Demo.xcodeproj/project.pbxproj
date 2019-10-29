@@ -24,6 +24,7 @@
 		A8791A3E232BD6C500089529 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A3D232BD6C500089529 /* Venue.swift */; };
 		A8791A42232BFF5E00089529 /* VenueListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A41232BFF5E00089529 /* VenueListVC.swift */; };
 		A8791A44232C586500089529 /* VenueListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8791A43232C586500089529 /* VenueListCell.swift */; };
+		A8AACD582332ED8B00F209FB /* VenueDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AACD572332ED8B00F209FB /* VenueDetail.swift */; };
 		A8BA0E9F232FEA50006449B2 /* VenuesOnMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BA0E9E232FEA50006449B2 /* VenuesOnMapVC.swift */; };
 		A8BA0EA2232FF751006449B2 /* UITableView+HandleEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BA0EA1232FF751006449B2 /* UITableView+HandleEmptyView.swift */; };
 		A8BA0EA4232FF77F006449B2 /* UITextField+PaddingandBottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BA0EA3232FF77F006449B2 /* UITextField+PaddingandBottomBorder.swift */; };
@@ -62,6 +63,7 @@
 		A8791A3D232BD6C500089529 /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		A8791A41232BFF5E00089529 /* VenueListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueListVC.swift; sourceTree = "<group>"; };
 		A8791A43232C586500089529 /* VenueListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueListCell.swift; sourceTree = "<group>"; };
+		A8AACD572332ED8B00F209FB /* VenueDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueDetail.swift; sourceTree = "<group>"; };
 		A8BA0E9E232FEA50006449B2 /* VenuesOnMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesOnMapVC.swift; sourceTree = "<group>"; };
 		A8BA0EA1232FF751006449B2 /* UITableView+HandleEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+HandleEmptyView.swift"; sourceTree = "<group>"; };
 		A8BA0EA3232FF77F006449B2 /* UITextField+PaddingandBottomBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+PaddingandBottomBorder.swift"; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				A8791A3D232BD6C500089529 /* Venue.swift */,
 				A82C4723232C83D000D0E92B /* VenueMap.swift */,
+				A8AACD572332ED8B00F209FB /* VenueDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				A8BA0E9F232FEA50006449B2 /* VenuesOnMapVC.swift in Sources */,
 				A82C4722232C833400D0E92B /* VenueDetailVC.swift in Sources */,
 				A8791A34232BD4B300089529 /* APIError.swift in Sources */,
+				A8AACD582332ED8B00F209FB /* VenueDetail.swift in Sources */,
 				A8BA0EA2232FF751006449B2 /* UITableView+HandleEmptyView.swift in Sources */,
 				A8BA0EA6232FF9B6006449B2 /* UIViewController+UIAlertController.swift in Sources */,
 				A8BA0EA4232FF77F006449B2 /* UITextField+PaddingandBottomBorder.swift in Sources */,
