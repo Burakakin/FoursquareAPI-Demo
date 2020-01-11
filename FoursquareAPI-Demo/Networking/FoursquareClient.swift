@@ -11,6 +11,7 @@ import Foundation
 class FoursquareClient: APIClient {
     
     var session: URLSession
+    var venue = [Venues]()
     
     init(configuration: URLSessionConfiguration) {
         self.session = URLSession(configuration: configuration)
@@ -28,6 +29,21 @@ class FoursquareClient: APIClient {
         }, completion: completion)
     }
     
+    
+    func getWholeVenues(with endpoint: FoursquareEnum , completion: @escaping (APIError) -> Void) {
+        
+        getVenues(with: endpoint)  { [weak self] result in
+            switch result {
+            case .success(let response):
+                guard let response = response?.response.venues else { return }
+                self?.venue.append(contentsOf: response)
+                completion(.invalidData)
+            case .failure(let error):
+                completion(error)
+            }
+        }
+        
+    }
     
     
 }

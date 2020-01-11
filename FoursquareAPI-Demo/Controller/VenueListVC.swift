@@ -11,12 +11,12 @@ import CoreLocation
 
 class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol, UITextFieldDelegate {
     
-    private let client = FoursquareClient()
+    private var client = FoursquareClient()
     var locationManager: CLLocationManager?
   
     var flag = true
     
-    var venue = [Venues]()
+    //var venue = [Venues]()
     var keyword: String = ""
     var localCoordinate: CLLocationCoordinate2D!
     
@@ -44,13 +44,14 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
         
         keywordTextField.delegate = self
         keywordTextField.addBottomBorder()
+
         
         keywordDoneButton()
        
     }
     
     func sendDataToFirstViewController(myData: CLLocationCoordinate2D) {
-        venue.removeAll()
+        client.venue.removeAll()
         guard let keyword = keywordTextField.text, !keyword.isEmpty else { return }
         localCoordinate = myData
         getVenue(query: keyword, latitude: "\(myData.latitude)", longitude: "\(myData.longitude)")
@@ -105,17 +106,28 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
     func getVenue(query: String, latitude: String, longitude: String ) {
 //        41.111226
 //        29.024223
-        client.getVenues(with: .search(lattitude: latitude, longitude: longitude, query: query)) { [weak self] result in
-            switch result {
-            case .success(let response):
-                guard let response = response?.response.venues else { return }
-                self?.venue.append(contentsOf: response)
-                DispatchQueue.main.async {
-                    self!.venueListTableView.reloadData()
-                }
-            case .failure(let error):
-                print("the error \(error)")
-            }
+//        client.getVenues(with: .search(lattitude: latitude, longitude: longitude, query: query)) { [weak self] result in
+//            switch result {
+//            case .success(let response):
+//                guard let response = response?.response.venues else { return }
+//                self?.venue.append(contentsOf: response)
+//                DispatchQueue.main.async {
+//                    self!.venueListTableView.reloadData()
+//                }
+//            case .failure(let error):
+//                print("the error \(error)")
+//            }
+//        }
+        
+        client.getWholeVenues(with: .search(lattitude: latitude, longitude: longitude, query: query)) {[weak self] (error) in
+            print("\(error.localizedDescription)")
+            print("I'm in ")
+            print(self!.client.venue.count)
+            self!.venueListTableView.reloadData()
+            
+        
+            
+            
         }
     }
     
@@ -126,7 +138,7 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
             
         }
         else {
-            venue.removeAll()
+            client.venue.removeAll()
             getVenue(query: keyword, latitude: "\(localCoordinate.latitude)", longitude: "\(localCoordinate.longitude)")
         }
         
@@ -141,18 +153,18 @@ class VenueListVC: UIViewController, CLLocationManagerDelegate, DelegateProtocol
 
 extension VenueListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if venue.count == 0 {
+        if client.venue.count == 0 {
             venueListTableView.setEmptyView(title: "Enter a Keyword", message: "Your venues will be here.")
         }
         else {
             venueListTableView.restore()
         }
-        return venue.count
+        return client.venue.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! VenueListCell
-        let venues = venue[indexPath.row]
+        let venues = client.venue[indexPath.row]
         
         cell.configureCell(venues: venues)
 
@@ -166,38 +178,38 @@ extension VenueListVC: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "showDetail" {
-            let indexPath = self.venueListTableView.indexPathForSelectedRow!
-            let venueDetail = venue[indexPath.row]
-            if let vc = segue.destination as? VenueDetailVC {
-               vc.id = venueDetail.id
-               vc.localCoordinate = localCoordinate
-            }
-        }
-        
-        if segue.identifier == "locationRetrieve" {
-            if let keyword = keywordTextField.text, !keyword.isEmpty {
-                if let vc = segue.destination as? LocationSelectionVC {
-                    vc.delegate = self
-                }
-            }
-           
-        }
-        
-        if segue.identifier == "venuesOnMap" {
-            if let vc = segue.destination as? VenuesOnMapVC {
-                var coordinates = [CLLocationCoordinate2D]()
-                for venueCoordinates in venue {
-                   coordinates.append(CLLocationCoordinate2D(latitude: venueCoordinates.location.lat, longitude: venueCoordinates.location.lng))
-                }
-                vc.coordinates = coordinates
-            }
-        }
-        
-        
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if segue.identifier == "showDetail" {
+//            let indexPath = self.venueListTableView.indexPathForSelectedRow!
+//            let venueDetail = venue[indexPath.row]
+//            if let vc = segue.destination as? VenueDetailVC {
+//               vc.id = venueDetail.id
+//               vc.localCoordinate = localCoordinate
+//            }
+//        }
+//
+//        if segue.identifier == "locationRetrieve" {
+//            if let keyword = keywordTextField.text, !keyword.isEmpty {
+//                if let vc = segue.destination as? LocationSelectionVC {
+//                    vc.delegate = self
+//                }
+//            }
+//
+//        }
+//
+//        if segue.identifier == "venuesOnMap" {
+//            if let vc = segue.destination as? VenuesOnMapVC {
+//                var coordinates = [CLLocationCoordinate2D]()
+//                for venueCoordinates in venue {
+//                   coordinates.append(CLLocationCoordinate2D(latitude: venueCoordinates.location.lat, longitude: venueCoordinates.location.lng))
+//                }
+//                vc.coordinates = coordinates
+//            }
+//        }
+//
+//
+//    }
     
     
 }
